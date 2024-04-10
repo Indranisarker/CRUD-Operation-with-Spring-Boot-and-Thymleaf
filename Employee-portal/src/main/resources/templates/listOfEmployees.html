@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<link th:include="navbar.html">
+<div class="content">
+    <!-- Success Message -->
+    <div th:if="${successMessage}" class="alert alert-success" role="alert">
+        <strong th:text="${successMessage}"></strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<div class="container">
+    <br>
+    <div class="row">
+        <h1>List Of Employees</h1>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-ml-3">
+            <form th:action="@{/employee/new}" method="get">
+                <button type="submit" class="button">Add Employee</button>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <table class="table table-striped table-bordered" style="margin-left: 0">
+        <thead>
+        <tr>
+            <th scope="col">Employee Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Salary</th>
+            <th style="text-align: center" scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each = "employee:${employees}">
+            <td th:text="${employee.name}"></td>
+            <td th:text="${employee.department}"></td>
+            <td th:text="${employee.salary}"></td>
+            <td style="text-align: center; margin-inside: 20px">
+                <a th:href="@{'/employee/update/' + ${employee.id}}" class="button">Update</a>
+                <a th:href="@{'/employee/delete/' + ${employee.id}}" class="button-1">Delete</a>
+            </td>
+        </tr>
+        <tr th:if="${employees == null or #lists.isEmpty(employees)}">No employees are added! </tr>
+        </tbody>
+    </table>
+</div>
+    <div class="footer">
+        <p style="text-align: center">@This is My First Spring Boot CRUD App with Frontend!!</p>
+    </div>
+</div>
+
+</body>
+</html>
