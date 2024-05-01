@@ -102,7 +102,7 @@ a:hover {
     margin-left: 20px;
 }
 .alert {
-    background-color: #09ad7f; /* Red background */
+    background-color: #04da9e; /* Red background */
     color: white; /* White text */
     padding: 20px; /* Some padding */
     margin-bottom: 15px; /* Bottom margin */
@@ -112,6 +112,7 @@ a:hover {
 
 /* Style the footer */
 .footer {
-    background-color: #f1f1f1;
+    background-color: #ffffff;
     padding: 10px;
+    margin-bottom: 0;
 }
